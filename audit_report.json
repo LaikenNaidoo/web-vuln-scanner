@@ -1,0 +1,76 @@
+{
+  "target": "https://www.saucedemo.com",
+  "scanned_at": "2026-11-25 11:52:25 UTC",
+  "summary": {
+    "High": 2,
+    "Medium": 1,
+    "Low": 3,
+    "Info": 1
+  },
+  "total_findings": 7,
+  "findings": [
+    {
+      "id": "HDR-MISSING-CONTENT-SECURITY-POLICY",
+      "category": "Security Misconfiguration",
+      "title": "Missing Security Header: Content-Security-Policy",
+      "severity": "High",
+      "evidence": "Header 'Content-Security-Policy' was not returned by https://www.saucedemo.com/",
+      "impact": "Prevents Cross-Site Scripting (XSS) and unauthorized script execution.",
+      "remediation": "Define a strict Content-Security-Policy header restricting script-src and default-src."
+    },
+    {
+      "id": "HDR-MISSING-STRICT-TRANSPORT-SECURITY",
+      "category": "Security Misconfiguration",
+      "title": "Missing Security Header: Strict-Transport-Security",
+      "severity": "High",
+      "evidence": "Header 'Strict-Transport-Security' was not returned by https://www.saucedemo.com/",
+      "impact": "Enforces HTTPS connections and protects against protocol downgrade attacks.",
+      "remediation": "Add 'Strict-Transport-Security: max-age=31536000; includeSubDomains'."
+    },
+    {
+      "id": "HDR-MISSING-X-FRAME-OPTIONS",
+      "category": "Security Misconfiguration",
+      "title": "Missing Security Header: X-Frame-Options",
+      "severity": "Medium",
+      "evidence": "Header 'X-Frame-Options' was not returned by https://www.saucedemo.com/",
+      "impact": "Protects users against Clickjacking attacks via embedded iframes.",
+      "remediation": "Set 'X-Frame-Options: DENY' or 'SAMEORIGIN'."
+    },
+    {
+      "id": "HDR-MISSING-X-CONTENT-TYPE-OPTIONS",
+      "category": "Security Misconfiguration",
+      "title": "Missing Security Header: X-Content-Type-Options",
+      "severity": "Low",
+      "evidence": "Header 'X-Content-Type-Options' was not returned by https://www.saucedemo.com/",
+      "impact": "Stops browsers from MIME-sniffing responses away from declared Content-Type.",
+      "remediation": "Set 'X-Content-Type-Options: nosniff'."
+    },
+    {
+      "id": "HDR-MISSING-REFERRER-POLICY",
+      "category": "Security Misconfiguration",
+      "title": "Missing Security Header: Referrer-Policy",
+      "severity": "Low",
+      "evidence": "Header 'Referrer-Policy' was not returned by https://www.saucedemo.com/",
+      "impact": "Controls how much referrer URL information is leaked to external origins.",
+      "remediation": "Set 'Referrer-Policy: strict-origin-when-cross-origin'."
+    },
+    {
+      "id": "HDR-INFO-SERVER",
+      "category": "Information Disclosure",
+      "title": "Technology Stack Disclosure via 'Server' Header",
+      "severity": "Low",
+      "evidence": "Server: GitHub.com",
+      "impact": "Reveals exact server/framework versions to aid targeted exploit selection.",
+      "remediation": "Strip or obfuscate the 'Server' response header at the reverse proxy/server level."
+    },
+    {
+      "id": "PATH-EXPOSED-ROBOTSTXT",
+      "category": "Sensitive Data Exposure",
+      "title": "Accessible Sensitive Resource: /robots.txt",
+      "severity": "Info",
+      "evidence": "HTTP 200 returned for https://www.saucedemo.com/robots.txt (67 bytes)",
+      "impact": "Public crawler directives that may reveal hidden administrative routes.",
+      "remediation": "Restrict public web access to '/robots.txt' via web server rules or remove it from the web root."
+    }
+  ]
+}
